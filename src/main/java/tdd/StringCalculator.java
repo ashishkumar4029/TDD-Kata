@@ -1,7 +1,5 @@
 package main.java.tdd;
 
-import java.util.Arrays;
-
 public class StringCalculator {
 
 	
@@ -10,7 +8,7 @@ public class StringCalculator {
 		if(numbers == null || numbers.trim().isEmpty())
 			return sum;
 		else {
-			String[] numbersArray = numbers.split(",");
+			String[] numbersArray = numbers.split("[,\n]");
 			for(int i=0;i<numbersArray.length;i++) {
 				sum = sum+Integer.parseInt(numbersArray[i] != null && !numbersArray[i].trim().isEmpty() ? numbersArray[i] : "0");
 			}

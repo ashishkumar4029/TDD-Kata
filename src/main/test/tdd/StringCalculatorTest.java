@@ -27,4 +27,15 @@ class StringCalculatorTest {
 		assertEquals(3, calculator.add("1,2,"));
 	}
 	
+	/**
+	 * Test Case 3
+	 */
+	@Test
+	void test2NumberStringWithLineBreak() {
+		assertEquals(6, calculator.add("1\n2,3"));
+		assertEquals(1, calculator.add("1,\n"));
+	}
+	
+	
+	
 }
