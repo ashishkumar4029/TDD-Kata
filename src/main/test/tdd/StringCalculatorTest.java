@@ -36,5 +36,15 @@ class StringCalculatorTest {
 		assertEquals(1, calculator.add("1,\n"));
 	}
 	
+	/**
+	 * Test Case 4
+	 */
+	@Test
+	void test2NumberStringWithLineBreakAndDiffDelimiters() {
+		assertEquals(6, calculator.add("//;1\n2;3"));
+		assertEquals(1, calculator.add("//-1-\n"));
+		assertEquals(10, calculator.add("5\n2,3"));
+	}
+	
 	
 }
