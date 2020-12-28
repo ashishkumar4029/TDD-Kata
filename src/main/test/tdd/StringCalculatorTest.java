@@ -85,5 +85,19 @@ class StringCalculatorTest {
 		assertEquals(expectedMsg , exceptionMsg);
 	}
 	
+	/**
+	 * Test Case 6
+	 */
+	@Test
+	void test2NumberStringWithLineBreakAndDiffDelimitersAndNegativeNmbrExceptionAndIgnoreAbove1000Values() {
+		try {
+			assertEquals(4, calculator.add("//;1\n2000;3"));
+			assertEquals(7, calculator.add("5\n2,3000"));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
 	
 }

@@ -20,6 +20,7 @@ public class StringCalculator {
 			else {
 				delimiterRegex = "[,\n]";
 			}
+			System.out.println(delimiterRegex);
 			String[] numbersArray = numbers.split(delimiterRegex);
 			List<String> errorList = new ArrayList<>();
 			for(int i= ++index;i<numbersArray.length;i++) {
@@ -27,6 +28,8 @@ public class StringCalculator {
 				if(nmbr < 0) {
 					errorList.add(String.valueOf(nmbr));
 				}
+				if(nmbr <= 1000)
+					sum = sum+nmbr;
 			}
 			if(!errorList.isEmpty())
 				throw new Exception("negatives not allowed "+String.join(",", errorList));
