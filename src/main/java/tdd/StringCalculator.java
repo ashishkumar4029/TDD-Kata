@@ -15,5 +15,4 @@ public class StringCalculator {
 		}
 		return sum;
 	}
-	
 }
