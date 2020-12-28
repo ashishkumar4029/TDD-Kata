@@ -1,9 +1,13 @@
 package main.java.tdd;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 public class StringCalculator {
 
 	
-	public int add(String numbers) {
+	public int add(String numbers) throws Exception {
 		int sum = 0;
 		if(numbers == null || numbers.trim().isEmpty())
 			return sum;
@@ -17,9 +21,15 @@ public class StringCalculator {
 				delimiterRegex = "[,\n]";
 			}
 			String[] numbersArray = numbers.split(delimiterRegex);
+			List<String> errorList = new ArrayList<>();
 			for(int i= ++index;i<numbersArray.length;i++) {
-				sum = sum+Integer.parseInt(numbersArray[i] != null && !numbersArray[i].trim().isEmpty() ? numbersArray[i] : "0");
+				int nmbr = Integer.parseInt(numbersArray[i] != null && !numbersArray[i].trim().isEmpty() ? numbersArray[i] : "0");
+				if(nmbr < 0) {
+					errorList.add(String.valueOf(nmbr));
+				}
 			}
+			if(!errorList.isEmpty())
+				throw new Exception("negatives not allowed "+String.join(",", errorList));
 		}
 		return sum;
 	}
