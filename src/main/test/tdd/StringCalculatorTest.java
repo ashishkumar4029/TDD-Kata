@@ -8,12 +8,23 @@ import main.java.tdd.StringCalculator;
 
 class StringCalculatorTest {
 
+	StringCalculator calculator = new StringCalculator();
+	/**
+	 * Test Case 1
+	 */
 	@Test
 	void testEmptyString() {
-		StringCalculator calculator = new StringCalculator();
 		assertEquals(0, calculator.add(""));
 		
 	}
 	
-
+	/**
+	 * Test Case 2
+	 */
+	@Test
+	void test2NumberString() {
+		assertEquals(3, calculator.add("1,2"));
+		assertEquals(3, calculator.add("1,2,"));
+	}
+	
 }
