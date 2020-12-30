@@ -14,7 +14,7 @@ class StringCalculatorTest {
 	 * Test Case 1
 	 * @throws Exception 
 	 */
-	@Test
+//	@Test
 	void testEmptyString() throws Exception {
 			assertEquals(0, calculator.add(""));
 	}
@@ -23,7 +23,7 @@ class StringCalculatorTest {
 	 * Test Case 2
 	 * @throws Exception 
 	 */
-	@Test
+//	@Test
 	void test2NumberString() throws Exception {
 			assertEquals(3, calculator.add("1,2"));
 			assertEquals(3, calculator.add("1,2,"));
@@ -33,7 +33,7 @@ class StringCalculatorTest {
 	 * Test Case 3
 	 * @throws Exception 
 	 */
-	@Test
+//	@Test
 	void test2NumberStringWithLineBreak() throws Exception {
 			assertEquals(6, calculator.add("1\n2,3"));
 			assertEquals(1, calculator.add("1,\n"));
@@ -43,7 +43,7 @@ class StringCalculatorTest {
 	 * Test Case 4
 	 * @throws Exception 
 	 */
-	 @Test
+//	 @Test
 	void test2NumberStringWithLineBreakAndDiffDelimiters() throws Exception {
 			assertEquals(6, calculator.add("//;1\n2;3"));
 			assertEquals(1, calculator.add("//-1-\n"));
@@ -53,7 +53,7 @@ class StringCalculatorTest {
 	/**
 	 * Test Case 5
 	 */
-	 @Test
+//	 @Test
 	void test2NumberStringWithLineBreakAndDiffDelimitersAndNegativeNmbrException() {
 
 		Exception exception = assertThrows(Exception.class, () -> {
@@ -76,7 +76,7 @@ class StringCalculatorTest {
 	/**
 	 * Test Case 6
 	 */
-	 @Test
+//	 @Test
 	void test2NumberStringWithLineBreakAndDiffDelimitersAndNegativeNmbrExceptionAndIgnoreAbove1000Values() {
 		try {
 			assertEquals(4, calculator.add("//;1\n2000;3"));
@@ -92,12 +92,23 @@ class StringCalculatorTest {
 	 * 
 	 * @throws Exception
 	 */
-	@Test
+//	@Test
 	void test2NumberStringWithLineBreakAndDiffDelimitersAndNegativeNmbrExceptionAndIgnoreAbove1000ValuesAndLengthDelimiter()
 			throws Exception {
 		assertEquals(7, calculator.add("//[***]\n1***3***3"));
 		assertEquals(6, calculator.add("//[%%%]\n2%%%4"));
 
+	}
+	
+	/**
+	 * Test Case 8
+	 * 
+	 * @throws Exception
+	 */
+	@Test
+	void test2NumberStringWithLineBreakAndDiffDelimitersAndNegativeNmbrExceptionAndIgnoreAbove1000ValuesAndLengthDifferentDelimiter()
+			throws Exception {
+		assertEquals(7, calculator.add("//[*][%]\n1*3%3"));
 	}
 	
 	
