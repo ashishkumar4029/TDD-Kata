@@ -1,7 +1,6 @@
 package main.java.tdd;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class StringCalculator {
@@ -15,15 +14,28 @@ public class StringCalculator {
 			int index = numbers.indexOf("//");
 			String delimiterRegex;
 			if(index != -1 && index < 2) {
-				delimiterRegex = "["+numbers.charAt(2)+"\n]";
+				if(numbers.indexOf('[') != -1 && numbers.indexOf(']') != -1) {
+					String str= numbers.substring(numbers.indexOf('[')+1, numbers.indexOf(']'));
+					if(str.charAt(0) == '+' || str.charAt(0) == '*'  || str.charAt(0) == '^' ) {
+						delimiterRegex = "(\\"+str.charAt(0)+"){"+str.length()+"}";
+					}else {
+						delimiterRegex = "("+str.charAt(0)+"){"+str.length()+"}";
+					}
+					numbers = numbers.substring(numbers.indexOf(']')+1,numbers.length());
+					numbers = numbers.replaceAll("[\n]",str );
+				}
+				else {
+					delimiterRegex = "["+numbers.charAt(2)+"\n]";
+					numbers = numbers.substring(3,numbers.length());
+				}
 			}
 			else {
 				delimiterRegex = "[,\n]";
 			}
-			System.out.println(delimiterRegex);
+			System.out.println("regex => " +delimiterRegex);
 			String[] numbersArray = numbers.split(delimiterRegex);
 			List<String> errorList = new ArrayList<>();
-			for(int i= ++index;i<numbersArray.length;i++) {
+			for(int i= 0;i<numbersArray.length;i++) {
 				int nmbr = Integer.parseInt(numbersArray[i] != null && !numbersArray[i].trim().isEmpty() ? numbersArray[i] : "0");
 				if(nmbr < 0) {
 					errorList.add(String.valueOf(nmbr));
@@ -34,6 +46,7 @@ public class StringCalculator {
 			if(!errorList.isEmpty())
 				throw new Exception("negatives not allowed "+String.join(",", errorList));
 		}
+		System.out.println("Sum => "+sum);
 		return sum;
 	}
 }
