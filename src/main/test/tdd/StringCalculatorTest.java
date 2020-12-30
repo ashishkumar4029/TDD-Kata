@@ -106,9 +106,20 @@ class StringCalculatorTest {
 	 * @throws Exception
 	 */
 	@Test
-	void test2NumberStringWithLineBreakAndDiffDelimitersAndNegativeNmbrExceptionAndIgnoreAbove1000ValuesAndLengthDifferentDelimiter()
+	void test2NumberStringWithLineBreakAndDiffDelimitersAndNegativeNmbrExceptionAndIgnoreAbove1000ValuesAndLengthOneDelimiterDifferent()
 			throws Exception {
 		assertEquals(7, calculator.add("//[*][%]\n1*3%3"));
+	}
+	
+	/**
+	 * Test Case 9
+	 * 
+	 * @throws Exception
+	 */
+	@Test
+	void test2NumberStringWithLineBreakAndDiffDelimitersAndNegativeNmbrExceptionAndIgnoreAbove1000ValuesAndLengthDifferentDelimiterDifferent()
+			throws Exception {
+		assertEquals(7, calculator.add("//[*][%%]\n1*3%%3"));
 	}
 	
 	
